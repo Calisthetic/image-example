@@ -33,6 +33,13 @@ Scaffold-DbContext "Data Source=DESKTOP-GJJERNN;Initial Catalog=24wsImages;Integ
 3. Контекст созданной модели позволяет взаиможействовать с базой данных
 4. Обращение к API с клиентского приложения осуществляется при помощи HTTP запросов
 
+### Использование изображений
+
+1. Прямое подключение с использованием конвертации byte[] to BitmapImage
+2. Прямое подключение с использованием byte[] as .Source for Image tag 
+3. Использование API, передача base64 string с дальнейшей конвертацией в byte[]
+4. Использование локального хранилища изображений
+
 ## How to setup
 
 1. Create your own database and run database script ./ImportData/DBScirpt.txt

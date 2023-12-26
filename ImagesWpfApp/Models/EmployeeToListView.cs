@@ -28,7 +28,8 @@ namespace ImagesWpfApp.Models
                 bitmap.BeginInit();
                 bitmap.StreamSource = new MemoryStream(Convert.FromBase64String(employee.ImageFile));
                 bitmap.EndInit();
-                ImageFile = bitmap;
+                //ImageFile = bitmap;
+                ImageFile = Convert.FromBase64String(employee.ImageFile);
             }
         }
         public int Id { get; set; }
@@ -47,7 +48,8 @@ namespace ImagesWpfApp.Models
 
         public string LastEntryType { get; set; }
 
-        public BitmapImage ImageFile { get; set; }
+        //public BitmapImage ImageFile { get; set; }
+        public byte[] ImageFile { get; set; }
 
         public string Role { get; set; } = null;
     }

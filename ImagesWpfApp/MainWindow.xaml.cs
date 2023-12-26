@@ -39,5 +39,10 @@ namespace ImagesWpfApp
         {
             PageManager.MainFrame.Navigate(new DataGridPage());
         }
+
+        private void btnLocalImages_Click(object sender, RoutedEventArgs e)
+        {
+            PageManager.MainFrame.Navigate(new LocalImagesPage());
+        }
     }
 }

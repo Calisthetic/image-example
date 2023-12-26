@@ -59,6 +59,8 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Image Width="40" Source="{Binding ImageFile, Converter={StaticResource ByteArrayToImage}}" />
+                            <!--Code below also works-->
+                            <!--<Image Width="40" Source="{Binding ImageFile}" />-->
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ImagesAPI.Models.Db;
+using ImagesAPI.Models.DTOs;
 
 namespace ImagesAPI.Controllers
 {
@@ -22,13 +23,14 @@ namespace ImagesAPI.Controllers
 
         // GET: api/Employees
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
+        public async Task<ActionResult<IEnumerable<EmployeesResponse>>> GetEmployees()
         {
-          if (_context.Employees == null)
-          {
-              return NotFound();
-          }
-            return await _context.Employees.ToListAsync();
+            if (_context.Employees == null)
+            {
+                return NotFound();
+            }
+            var result = await _context.Employees.Include(x => x.Role).ToListAsync();
+            return result.ConvertAll(x => new EmployeesResponse(x));
         }
 
         // GET: api/Employees/5

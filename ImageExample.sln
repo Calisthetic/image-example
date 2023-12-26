@@ -5,6 +5,10 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadDataConsoleApp", "ReadDataConsoleApp\ReadDataConsoleApp.csproj", "{09470774-17DA-4800-ACA8-67CB4DC9944D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImagesWpfApp", "ImagesWpfApp\ImagesWpfApp.csproj", "{571E7B28-8455-42D5-91FA-384DFA955590}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImagesAPI", "ImagesAPI\ImagesAPI.csproj", "{7D546234-0B11-4F4F-BBB0-C3DD38974379}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{09470774-17DA-4800-ACA8-67CB4DC9944D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09470774-17DA-4800-ACA8-67CB4DC9944D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09470774-17DA-4800-ACA8-67CB4DC9944D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{571E7B28-8455-42D5-91FA-384DFA955590}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{571E7B28-8455-42D5-91FA-384DFA955590}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{571E7B28-8455-42D5-91FA-384DFA955590}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{571E7B28-8455-42D5-91FA-384DFA955590}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D546234-0B11-4F4F-BBB0-C3DD38974379}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D546234-0B11-4F4F-BBB0-C3DD38974379}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D546234-0B11-4F4F-BBB0-C3DD38974379}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D546234-0B11-4F4F-BBB0-C3DD38974379}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

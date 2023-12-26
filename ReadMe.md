@@ -6,7 +6,9 @@
 
 ## How to setup
 
-
+1. Create your own database and run database script ./ImportData/DBScirpt.txt
+2. Change connection strings
+3. Run solution
 
 ## Others
 

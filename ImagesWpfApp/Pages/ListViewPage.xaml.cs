@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImagesWpfApp.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.Json;
+using ImagesWpfApp.Models;
 
 namespace ImagesWpfApp.Pages
 {
@@ -23,6 +26,19 @@ namespace ImagesWpfApp.Pages
         public ListViewPage()
         {
             InitializeComponent();
+        }
+
+        private async void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            string response = await APIContext.GetRequest("Employees");
+            if (response != null)
+            {
+                var employees = JsonSerializer.Deserialize<List<EmployeeResponse>>(response);
+                LVEmployees.ItemsSource = employees.ConvertAll(x => new EmployeeToListView(x));
+            } else
+            {
+                MessageBox.Show("Не удалось получить данные!");
+            }
         }
     }
 }

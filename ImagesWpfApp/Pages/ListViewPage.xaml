@@ -6,13 +6,31 @@
       xmlns:local="clr-namespace:ImagesWpfApp.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ListViewPage">
+      Title="ListViewPage" IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid>
-        <ListView BorderThickness="0" x:Name="LVMessages">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Взаимодействие с API" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"></TextBlock>
+        <ListView BorderThickness="0" x:Name="LVEmployees" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Image></Image>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                            <TextBlock Text="{Binding Id}"></TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding SecondName}"></TextBlock>
+                                <TextBlock Text=" "></TextBlock>
+                                <TextBlock Text="{Binding FirstName}"></TextBlock>
+                                <TextBlock Text=" "></TextBlock>
+                                <TextBlock Text="{Binding ThirdName}"></TextBlock>
+                            </StackPanel>
+                            <TextBlock Text="{Binding Role}"></TextBlock>
+                        </StackPanel>
+                        <Image Source="{Binding ImageFile}" Width="100" Height="100" HorizontalAlignment="Right"></Image>
+                    </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

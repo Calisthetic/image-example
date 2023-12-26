@@ -13,7 +13,12 @@
     </Page.Resources>
 
     <Grid>
-        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" x:Name="DGEmployees">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Прямое подключение" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"></TextBlock>
+        <DataGrid AutoGenerateColumns="False" Grid.Row="1" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" x:Name="DGEmployees" Grid.RowSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}"></DataGridTextColumn>
                 <DataGridTemplateColumn Header="ФИО">

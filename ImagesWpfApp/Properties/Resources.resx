@@ -121,4 +121,34 @@
   <data name="Person" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Person.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Беляева" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Беляева.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Иванов" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Иванов.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Игнатов" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Игнатов.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Миронов" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Миронов.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Петров" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Петров.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Смирнова" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Смирнова.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Стрелков" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Стрелков.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Федоров" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Федоров.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Хохлов" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Хохлов.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ширяев" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ширяев.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

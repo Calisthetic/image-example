@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
 
 namespace ImagesWpfApp.Models
 {
-    internal class EmployeeToListView
+    public class EmployeeToItemsControl
     {
-        public EmployeeToListView(EmployeeResponse employee)
+        public EmployeeToItemsControl(Employees employee)
         {
-            Role = employee.Role;
+            Role = employee.Roles.Name;
             Id = employee.Id;
             FirstName = employee.FirstName;
             SecondName = employee.SecondName;
@@ -20,17 +18,8 @@ namespace ImagesWpfApp.Models
             Login = employee.Login;
             Password = employee.Password;
             LastEntryTime = employee.LastEntryTime;
-            LastEntryType = employee.LastEntryType;
-            ImageFile = null;
-            if (employee.ImageFile != null)
-            {
-                //var bitmap = new BitmapImage();
-                //bitmap.BeginInit();
-                //bitmap.StreamSource = new MemoryStream(Convert.FromBase64String(employee.ImageFile));
-                //bitmap.EndInit();
-                //ImageFile = bitmap;
-                ImageFile = Convert.FromBase64String(employee.ImageFile);
-            }
+            LastEntryType = employee.LastEntryType != null ? (bool)employee.LastEntryType ? "Успешно" : "Не успешно" : string.Empty;
+            ImagePath = "/Resources/" + SecondName + ".jpeg";
         }
         public int Id { get; set; }
 
@@ -48,8 +37,7 @@ namespace ImagesWpfApp.Models
 
         public string LastEntryType { get; set; }
 
-        //public BitmapImage ImageFile { get; set; }
-        public byte[] ImageFile { get; set; }
+        public string ImagePath { get; set; }
 
         public string Role { get; set; } = null;
     }

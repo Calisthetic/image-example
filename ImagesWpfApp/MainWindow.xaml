@@ -15,7 +15,7 @@
         <StackPanel Margin="10 0 10 0" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button x:Name="btnToListView" Content="ListView" Click="btnToListView_Click"></Button>
             <Button x:Name="btnToDataGrid" Content="DataGrid" Margin="16 0 0 0" Click="btnToDataGrid_Click"></Button>
-            <Button x:Name="btnLocalImages" Content="LocalImages" Margin="16 0 0 0" Click="btnLocalImages_Click"></Button>
+            <Button x:Name="btnItemsControl" Content="LocalImages" Margin="16 0 0 0" Click="btnItemsControl_Click"></Button>
         </StackPanel>
     </Grid>
 </Window>

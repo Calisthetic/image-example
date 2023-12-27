@@ -1,4 +1,5 @@
-﻿using ImagesWpfApp.Utils;
+﻿using ImagesWpfApp.Models;
+using ImagesWpfApp.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -18,11 +19,11 @@ using System.Windows.Shapes;
 namespace ImagesWpfApp.Pages
 {
     /// <summary>
-    /// Interaction logic for LocalImagesPage.xaml
+    /// Interaction logic for ItemsControlPage.xaml
     /// </summary>
-    public partial class LocalImagesPage : Page
+    public partial class ItemsControlPage : Page
     {
-        public LocalImagesPage()
+        public ItemsControlPage()
         {
             InitializeComponent();
         }
@@ -31,7 +32,15 @@ namespace ImagesWpfApp.Pages
         {
             if (Visibility == Visibility.Visible)
             {
-                icEmployees.ItemsSource = await DBContext.db.Employees.ToListAsync();
+                try
+                {
+                    var employees = await DBContext.db.Employees.ToListAsync();
+                    icEmployees.ItemsSource = employees.ConvertAll(x => new EmployeeToItemsControl(x));
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибочка");
+                }
             }
         }
     }

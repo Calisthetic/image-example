@@ -30,14 +30,25 @@ namespace ImagesWpfApp.Pages
 
         private async void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            string response = await APIContext.GetRequest("Employees");
-            if (response != null)
+            if (Visibility == Visibility.Visible)
             {
-                var employees = JsonSerializer.Deserialize<List<EmployeeResponse>>(response);
-                LVEmployees.ItemsSource = employees.ConvertAll(x => new EmployeeToListView(x));
-            } else
-            {
-                MessageBox.Show("Не удалось получить данные!");
+                string response = await APIContext.GetRequest("Employees");
+                if (response != null)
+                {
+                    try
+                    {
+                        var employees = JsonSerializer.Deserialize<List<EmployeeResponse>>(response);
+                        LVEmployees.ItemsSource = employees.ConvertAll(x => new EmployeeToListView(x));
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Не удалось получить данные");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Не удалось получить данные!");
+                }
             }
         }
     }

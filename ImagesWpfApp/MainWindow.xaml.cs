@@ -27,7 +27,7 @@ namespace ImagesWpfApp
             InitializeComponent();
 
             PageManager.MainFrame = MainFrame;
-            PageManager.MainFrame.Navigate(new Pages.SelectPage());
+            PageManager.MainFrame.Navigate(new SelectPage());
         }
 
         private void btnToListView_Click(object sender, RoutedEventArgs e)
@@ -40,9 +40,9 @@ namespace ImagesWpfApp
             PageManager.MainFrame.Navigate(new DataGridPage());
         }
 
-        private void btnLocalImages_Click(object sender, RoutedEventArgs e)
+        private void btnItemsControl_Click(object sender, RoutedEventArgs e)
         {
-            PageManager.MainFrame.Navigate(new LocalImagesPage());
+            PageManager.MainFrame.Navigate(new ItemsControlPage());
         }
     }
 }

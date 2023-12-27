@@ -112,6 +112,7 @@
     <Compile Include="Models\Employees.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmployeeToItemsControl.cs" />
     <Compile Include="Models\EmployeeToListView.cs" />
     <Compile Include="Models\Roles.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
@@ -123,8 +124,8 @@
     <Compile Include="Pages\ListViewPage.xaml.cs">
       <DependentUpon>ListViewPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\LocalImagesPage.xaml.cs">
-      <DependentUpon>LocalImagesPage.xaml</DependentUpon>
+    <Compile Include="Pages\ItemsControlPage.xaml.cs">
+      <DependentUpon>ItemsControlPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SelectPage.xaml.cs">
       <DependentUpon>SelectPage.xaml</DependentUpon>
@@ -152,7 +153,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\LocalImagesPage.xaml">
+    <Page Include="Pages\ItemsControlPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -207,6 +208,16 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Федоров.jpeg" />
+    <Resource Include="Resources\Стрелков.jpeg" />
+    <Resource Include="Resources\Смирнова.jpeg" />
+    <Resource Include="Resources\Петров.jpeg" />
+    <Resource Include="Resources\Миронов.jpeg" />
+    <Resource Include="Resources\Игнатов.jpeg" />
+    <Resource Include="Resources\Иванов.jpeg" />
+    <Resource Include="Resources\Беляева.jpeg" />
+    <Resource Include="Resources\Ширяев.jpeg" />
+    <Resource Include="Resources\Хохлов.jpeg" />
     <Resource Include="Resources\Person.jpg" />
   </ItemGroup>
   <ItemGroup>

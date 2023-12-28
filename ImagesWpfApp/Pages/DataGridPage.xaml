@@ -19,7 +19,7 @@
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <TextBlock Text="Прямое подключение" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"></TextBlock>
-        <DataGrid AutoGenerateColumns="False" Grid.Row="1" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" x:Name="DGEmployees" Grid.RowSpan="2">
+        <DataGrid AutoGenerateColumns="False" Grid.Row="1" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" x:Name="DGEmployees">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}"></DataGridTextColumn>
                 <DataGridTemplateColumn Header="ФИО">
@@ -59,7 +59,16 @@
                 <DataGridTemplateColumn Header="Картинка">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Width="40" Source="{Binding ImageFile, Converter={StaticResource ByteArrayToImage}}" />
+                            <!--<Image Width="40" Source="{Binding ImageFile, Converter={StaticResource ByteArrayToImage}}" />-->
+                            <Image Width="40" HorizontalAlignment="Right">
+                                <Image.Source>
+                                    <Binding Path="ImageFile">
+                                        <Binding.TargetNullValue>
+                                            <ImageSource>/Resources/Person.jpg</ImageSource>
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
                             <!--Code below also works-->
                             <!--<Image Width="40" Source="{Binding ImageFile}" />-->
                         </DataTemplate>

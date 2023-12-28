@@ -1,4 +1,5 @@
-﻿using ImagesWpfApp.Utils;
+﻿using ImagesWpfApp.Models;
+using ImagesWpfApp.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -31,8 +32,51 @@ namespace ImagesWpfApp.Pages
         {
             if (Visibility == Visibility.Visible)
             {
-                DGEmployees.ItemsSource = await DBContext.db.Employees.ToListAsync();
+                await RefreshData();
             }
+        }
+
+        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        {
+            PageManager.MainFrame.Navigate(new DataGridCreateUpdatePage());
+        }
+
+        private async void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            List<Employees> selectedYemploees = DGEmployees.SelectedItems.Cast<Employees>().ToList();
+            DBContext.db.Employees.RemoveRange(selectedYemploees);
+            try
+            {
+                await DBContext.db.SaveChangesAsync();
+                await RefreshData();
+                MessageBox.Show("Let's gooo");
+            }
+            catch
+            {
+                MessageBox.Show("Не удалось удалить сотрудника");
+            }
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            List<Employees> selectedYemploees = DGEmployees.SelectedItems.Cast<Employees>().ToList();
+            if (selectedYemploees.Count == 0)
+            {
+                MessageBox.Show("Выберите сотрудника");
+            }
+            else if (selectedYemploees.Count > 1)
+            {
+                MessageBox.Show("Выберите только одного сотрудника");
+            }
+            else
+            {
+                PageManager.MainFrame.Navigate(new DataGridCreateUpdatePage(selectedYemploees[0]));
+            }
+        }
+
+        private async Task RefreshData()
+        {
+            DGEmployees.ItemsSource = await DBContext.db.Employees.ToListAsync();
         }
     }
 }

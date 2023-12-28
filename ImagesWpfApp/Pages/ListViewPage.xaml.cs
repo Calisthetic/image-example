@@ -95,7 +95,8 @@ namespace ImagesWpfApp.Pages
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _isClickable = cmbClickability.SelectedIndex == 1 ? true : false;
+            _isClickable = cmbClickability.SelectedIndex == 1 ? true : cmbClickability.SelectedIndex == 2 ? false : _isClickable;
+            cmbClickability.SelectedIndex = 0;
         }
     }
 }

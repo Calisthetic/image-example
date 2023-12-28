@@ -118,8 +118,14 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Pages\ByteArrayToImage.cs" />
+    <Compile Include="Pages\DataGridCreateUpdatePage.xaml.cs">
+      <DependentUpon>DataGridCreateUpdatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\DataGridPage.xaml.cs">
       <DependentUpon>DataGridPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ListViewCreateUpdatePage.xaml.cs">
+      <DependentUpon>ListViewCreateUpdatePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ListViewPage.xaml.cs">
       <DependentUpon>ListViewPage.xaml</DependentUpon>
@@ -145,7 +151,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\DataGridCreateUpdatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\DataGridPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ListViewCreateUpdatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

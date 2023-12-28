@@ -8,14 +8,14 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
-        <StackPanel Margin="10 0 10 0" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1"></Frame>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button x:Name="btnToListView" Content="ListView" Click="btnToListView_Click"></Button>
-            <Button x:Name="btnToDataGrid" Content="DataGrid" Margin="16 0 0 0" Click="btnToDataGrid_Click"></Button>
-            <Button x:Name="btnItemsControl" Content="ItemsControl" Margin="16 0 0 0" Click="btnItemsControl_Click"></Button>
+            <Button x:Name="btnToDataGrid" Content="DataGrid" Margin="8 0 8 0" Click="btnToDataGrid_Click"></Button>
+            <Button x:Name="btnItemsControl" Content="ItemsControl" Click="btnItemsControl_Click"></Button>
         </StackPanel>
     </Grid>
 </Window>

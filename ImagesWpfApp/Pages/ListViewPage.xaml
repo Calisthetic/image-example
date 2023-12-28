@@ -10,11 +10,12 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <TextBlock Text="Взаимодействие с API" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"></TextBlock>
-        <ListView BorderThickness="0" x:Name="LVEmployees" Grid.Row="1">
+        <ListView SelectionChanged="LVEmployees_SelectionChanged" BorderThickness="0" x:Name="LVEmployees" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Width="800">
@@ -42,5 +43,10 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2">
+            <Button x:Name="btnCreate" Content="Добавить" Click="btnCreate_Click"></Button>
+            <Button x:Name="btnEdit" Content="Редактировать" Margin="8 0" Click="btnEdit_Click"></Button>
+            <Button x:Name="btnDelete" Content="Удалить" Click="btnDelete_Click"></Button>
+        </StackPanel>
     </Grid>
 </Page>

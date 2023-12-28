@@ -14,8 +14,9 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <TextBlock Text="Прямое подключение" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"></TextBlock>
         <DataGrid AutoGenerateColumns="False" Grid.Row="1" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" x:Name="DGEmployees" Grid.RowSpan="2">
@@ -66,5 +67,10 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2">
+            <Button x:Name="btnCreate" Content="Добавить" Click="btnCreate_Click"></Button>
+            <Button x:Name="btnEdit" Content="Редактировать" Margin="8 0" Click="btnEdit_Click"></Button>
+            <Button x:Name="btnDelete" Content="Удалить" Click="btnDelete_Click"></Button>
+        </StackPanel>
     </Grid>
 </Page>

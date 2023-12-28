@@ -34,7 +34,7 @@ namespace ImagesWpfApp.Pages
             {
                 try
                 {
-                    var employees = await DBContext.db.Employees.ToListAsync();
+                    var employees = await DBContext.db.Employees.Include(x => x.Roles).ToListAsync();
                     icEmployees.ItemsSource = employees.ConvertAll(x => new EmployeeToItemsControl(x));
                 }
                 catch

@@ -10,7 +10,7 @@ namespace ImagesWpfApp.Models
     {
         public EmployeeToItemsControl(Employees employee)
         {
-            Role = employee.Roles.Name;
+            Role = employee.Roles != null ? employee.Roles.Name : string.Empty;
             Id = employee.Id;
             FirstName = employee.FirstName;
             SecondName = employee.SecondName;

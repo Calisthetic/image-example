@@ -8,7 +8,7 @@ using System.Windows.Media.Imaging;
 
 namespace ImagesWpfApp.Models
 {
-    internal class EmployeeToListView
+    public class EmployeeToListView
     {
         public EmployeeToListView(EmployeeResponse employee)
         {

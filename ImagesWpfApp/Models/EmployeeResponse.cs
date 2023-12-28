@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ImagesWpfApp.Models
 {
-    internal class EmployeeResponse
+    public class EmployeeResponse
     {
         [JsonPropertyName("id")]
         public int Id { get; set; }

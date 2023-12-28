@@ -18,7 +18,7 @@
         <ListView SelectionChanged="LVEmployees_SelectionChanged" BorderThickness="0" x:Name="LVEmployees" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal" Width="800">
+                    <StackPanel Orientation="Horizontal">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                             <TextBlock Text="{Binding Id}"></TextBlock>
                             <StackPanel Orientation="Horizontal">
@@ -44,6 +44,11 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2">
+            <ComboBox x:Name="cmbClickability" VerticalContentAlignment="Center" FontSize="20" Height="30" Margin="0 0 8 0" SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBoxItem IsSelected="True" Content="☰" Visibility="Collapsed"></ComboBoxItem>
+                <ComboBoxItem FontSize="16" Content="Clickable"></ComboBoxItem>
+                <ComboBoxItem FontSize="16" Content="Not clickable"></ComboBoxItem>
+            </ComboBox>
             <Button x:Name="btnCreate" Content="Добавить" Click="btnCreate_Click"></Button>
             <Button x:Name="btnEdit" Content="Редактировать" Margin="8 0" Click="btnEdit_Click"></Button>
             <Button x:Name="btnDelete" Content="Удалить" Click="btnDelete_Click"></Button>

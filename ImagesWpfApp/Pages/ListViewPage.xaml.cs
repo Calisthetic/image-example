@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.Json;
 using ImagesWpfApp.Models;
+using System.Diagnostics;
 
 namespace ImagesWpfApp.Pages
 {
@@ -23,6 +24,7 @@ namespace ImagesWpfApp.Pages
     /// </summary>
     public partial class ListViewPage : Page
     {
+        private bool _isClickable = false;
         public ListViewPage()
         {
             InitializeComponent();
@@ -50,6 +52,50 @@ namespace ImagesWpfApp.Pages
                     MessageBox.Show("Не удалось получить данные!");
                 }
             }
+        }
+
+        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            List<EmployeeToListView> selectedEmployees = LVEmployees.SelectedItems.Cast<EmployeeToListView>().ToList();
+            if (selectedEmployees.Count == 0)
+            {
+                MessageBox.Show("Выберите сотрудника");
+            }
+            else if (selectedEmployees.Count > 1)
+            {
+                MessageBox.Show("Выберите только одного сотрудника");
+            }
+            else
+            {
+            }
+        }
+
+        private void LVEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = LVEmployees.SelectedItem;
+            if (item != null) {
+                var niceItem = item as EmployeeToListView;
+                Debug.WriteLine((item as EmployeeToListView).Id);
+                if (_isClickable)
+                {
+                    PageManager.MainFrame.Navigate(new ListViewCreateUpdatePage(niceItem));
+                }
+            }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _isClickable = cmbClickability.SelectedIndex == 1 ? true : false;
         }
     }
 }

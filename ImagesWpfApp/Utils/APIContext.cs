@@ -14,13 +14,56 @@ namespace ImagesWpfApp.Utils
         {
             try
             {
-                var responseTask = await _httpClient.GetAsync(path);
+                var result = await _httpClient.GetAsync(path);
 
-                if (responseTask.IsSuccessStatusCode)
+                if (result.IsSuccessStatusCode)
                 {
-                    var resultString = await responseTask.Content.ReadAsStringAsync();
+                    var resultString = await result.Content.ReadAsStringAsync();
                     return resultString;
                 }
+                else
+                    return string.Empty;
+            }
+            catch { return string.Empty; }
+        }
+        public static async Task<string> Post(string urlPath, string obj)
+        {
+            try
+            {
+                var result = await _httpClient.PostAsync(urlPath, new StringContent(obj, Encoding.UTF8, "application/json"));
+
+                if (result.StatusCode == System.Net.HttpStatusCode.Created)
+                {
+                    return "Success";
+                }
+                else
+                    return string.Empty;
+            }
+            catch { return string.Empty; }
+        }
+
+        public static async Task<string> Put(string urlPath, string obj)
+        {
+            try
+            {
+                var result = await _httpClient.PutAsync(urlPath, new StringContent(obj, Encoding.UTF8, "application/json"));
+
+                if (result.StatusCode == System.Net.HttpStatusCode.NoContent)
+                    return "Success";
+                else
+                    return string.Empty;
+            }
+            catch { return string.Empty; }
+        }
+
+        public static async Task<string> Delete(string urlPath)
+        {
+            try
+            {
+                var result = await _httpClient.DeleteAsync(urlPath);
+
+                if (result.StatusCode == System.Net.HttpStatusCode.OK)
+                    return "Success";
                 else
                     return string.Empty;
             }

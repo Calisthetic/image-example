@@ -34,37 +34,37 @@ namespace ImagesWpfApp.Pages
         {
             if (Visibility == Visibility.Visible)
             {
-                string response = await APIContext.GetRequest("Employees");
-                if (response != null)
+                await RefreshData();
+            }
+        }
+
+        private async Task RefreshData()
+        {
+            string response = await APIContext.GetRequest("Employees");
+            if (response != null)
+            {
+                try
                 {
-                    try
-                    {
-                        var employees = JsonSerializer.Deserialize<List<EmployeeResponse>>(response);
-                        LVEmployees.ItemsSource = employees.ConvertAll(x => new EmployeeToListView(x));
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Не удалось получить данные");
-                    }
+                    var employees = JsonSerializer.Deserialize<List<EmployeeResponse>>(response);
+                    LVEmployees.ItemsSource = employees.ConvertAll(x => new EmployeeToListView(x));
                 }
-                else
+                catch
                 {
-                    MessageBox.Show("Не удалось получить данные!");
+                    MessageBox.Show("Не удалось получить данные");
                 }
+            }
+            else
+            {
+                MessageBox.Show("Не удалось получить данные!");
             }
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-
+            PageManager.MainFrame.Navigate(new ListViewCreateUpdatePage());
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             List<EmployeeToListView> selectedEmployees = LVEmployees.SelectedItems.Cast<EmployeeToListView>().ToList();
             if (selectedEmployees.Count == 0)
@@ -77,6 +77,33 @@ namespace ImagesWpfApp.Pages
             }
             else
             {
+                PageManager.MainFrame.Navigate(new ListViewCreateUpdatePage(selectedEmployees[0]));
+            }
+        }
+
+        private async void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            List<EmployeeToListView> selectedEmployees = LVEmployees.SelectedItems.Cast<EmployeeToListView>().ToList();
+            if (selectedEmployees.Count == 0)
+            {
+                MessageBox.Show("Выберите сотрудника");
+            }
+            else if (selectedEmployees.Count > 1)
+            {
+                MessageBox.Show("Выберите только одного сотрудника");
+            }
+            else
+            {
+                string result = await APIContext.Delete("Employees/" + selectedEmployees[0].Id);
+                if (result != null)
+                {
+                    await RefreshData();
+                    MessageBox.Show("Удалено успешно");
+                }
+                else
+                {
+                    MessageBox.Show("Не получилось");
+                }
             }
         }
 

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -64,7 +65,7 @@ namespace ImagesWpfApp.Pages
             }
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
+        private async void btnSave_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -82,6 +83,15 @@ namespace ImagesWpfApp.Pages
                         encoder.Save(stream);
                         _employee.ImageFile = stream.ToArray();
                     }
+                    string result = await APIContext.Put("Employees/" + _employee.Id, JsonSerializer.Serialize(new EmployeeResponse(_employee)));
+                    if (result == "Success")
+                    {
+                        MessageBox.Show("Данные сохранены");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Не получилось");
+                    }
                 }
                 else
                 {
@@ -92,17 +102,26 @@ namespace ImagesWpfApp.Pages
                         encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
                         encoder.Save(stream);
 
-                        var t = new Employees()
+                        var t = new EmployeeResponse()
                         {
                             FirstName = txbFirstName.Text,
                             SecondName = txbSecondName.Text,
                             ThirdName = txbThirdName.Text,
-                            ImageFile = stream.ToArray(),
+                            ImageFile = Convert.ToBase64String(stream.ToArray()),
                             Login = "1",
                             Password = "2",
-                            RoleId = 1
+                            Role = "Продавец"
                         };
-                        PageManager.MainFrame.GoBack();
+                        string result = await APIContext.Post("Employees", JsonSerializer.Serialize(t));
+                        if (string.IsNullOrEmpty(result))
+                        {
+                            MessageBox.Show("Не получилось");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Добавлено");
+                            PageManager.MainFrame.GoBack();
+                        }
                     }
                 }
             }

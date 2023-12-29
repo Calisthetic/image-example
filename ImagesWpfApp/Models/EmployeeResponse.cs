@@ -9,6 +9,22 @@ namespace ImagesWpfApp.Models
 {
     public class EmployeeResponse
     {
+        public EmployeeResponse() { }
+
+        public EmployeeResponse(EmployeeToListView employee)
+        {
+            Id = employee.Id;
+            FirstName = employee.FirstName;
+            SecondName = employee.SecondName;
+            ThirdName = employee.ThirdName;
+            Login = employee.Login;
+            Password = employee.Password;
+            LastEntryTime = employee.LastEntryTime;
+            LastEntryType = employee.LastEntryType;
+            ImageFile = Convert.ToBase64String(employee.ImageFile);
+            Role = employee.Role;
+        }
+
         [JsonPropertyName("id")]
         public int Id { get; set; }
 

@@ -18,7 +18,12 @@
         <ListView SelectionChanged="LVEmployees_SelectionChanged" BorderThickness="0" x:Name="LVEmployees" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="180"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                             <TextBlock Text="{Binding Id}"></TextBlock>
                             <StackPanel Orientation="Horizontal">
@@ -30,7 +35,7 @@
                             </StackPanel>
                             <TextBlock Text="{Binding Role}"></TextBlock>
                         </StackPanel>
-                        <Image Width="100" Height="100" HorizontalAlignment="Right">
+                        <Image Grid.Column="1" Width="100" Height="100" HorizontalAlignment="Right">
                             <Image.Source>
                                 <Binding Path="ImageFile">
                                     <Binding.TargetNullValue>
@@ -39,7 +44,11 @@
                                 </Binding>
                             </Image.Source>
                         </Image>
-                    </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Column="2" HorizontalAlignment="Center">
+                            <Button x:Name="btnItemEdit" Content="Редактировать" HorizontalAlignment="Center" Margin="0 0 0 10"></Button>
+                            <Button x:Name="btnItemDelete" Content="Удалить" HorizontalAlignment="Center"></Button>
+                        </StackPanel>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

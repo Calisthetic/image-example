@@ -52,16 +52,27 @@ namespace ImagesAPI.Controllers
         }
 
         // PUT: api/Employees/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmployee(int id, Employee employee)
+        public async Task<IActionResult> PutEmployee(int id, EmployeesResponse employee)
         {
             if (id != employee.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(employee).State = EntityState.Modified;
+            var current = await _context.Employees.FindAsync(employee.Id);
+            if (current == null)
+            {
+                return BadRequest();
+            }
+
+            current.FirstName = employee.FirstName;
+            current.SecondName = employee.SecondName;
+            current.ThirdName = employee.ThirdName;
+            if (employee.ImageFile != null)
+            {
+                current.ImageFile = Convert.FromBase64String(employee.ImageFile);
+            }
 
             try
             {
@@ -85,13 +96,22 @@ namespace ImagesAPI.Controllers
         // POST: api/Employees
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
+        public async Task<ActionResult<Employee>> PostEmployee(EmployeesResponse employee)
         {
-          if (_context.Employees == null)
-          {
-              return Problem("Entity set '_24wsImagesContext.Employees'  is null.");
-          }
-            _context.Employees.Add(employee);
+            if (_context.Employees == null)
+            {
+                return Problem("Entity set '_24wsImagesContext.Employees'  is null.");
+            }
+            _context.Employees.Add(new Employee()
+            {
+                FirstName = employee.FirstName,
+                SecondName = employee.SecondName,
+                ThirdName = employee.ThirdName,
+                ImageFile = employee.ImageFile is null ? null : Convert.FromBase64String(employee.ImageFile),
+                RoleId = 1,
+                Login = employee.Login,
+                Password = employee.Password,
+            });
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetEmployee", new { id = employee.Id }, employee);

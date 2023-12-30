@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -95,32 +96,57 @@ namespace ImagesWpfApp.Pages
                 }
                 else
                 {
-                    BitmapSource bitmapSource = (BitmapSource)imgAva.Source;
-                    using (MemoryStream stream = new MemoryStream())
+                    if (imgAva.Source != null)
                     {
-                        BitmapEncoder encoder = new PngBitmapEncoder();
-                        encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
-                        encoder.Save(stream);
+                        BitmapSource bitmapSource = (BitmapSource)imgAva.Source;
+                        using (MemoryStream stream = new MemoryStream())
+                        {
+                            BitmapEncoder encoder = new PngBitmapEncoder();
+                            encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
+                            encoder.Save(stream);
 
+                            var t = new EmployeeResponse()
+                            {
+                                FirstName = txbFirstName.Text,
+                                SecondName = txbSecondName.Text,
+                                ThirdName = txbThirdName.Text,
+                                ImageFile = Convert.ToBase64String(stream.ToArray()),
+                                Login = "1",
+                                Password = "2",
+                                Role = "Продавец"
+                            };
+                            string result = await APIContext.Post("Employees", JsonSerializer.Serialize(t));
+                            if (await CreateEmployee(t))
+                            {
+                                MessageBox.Show("Добавлено");
+                                PageManager.MainFrame.GoBack();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Не получилось");
+                            }
+                        }
+                    }
+                    else
+                    {
                         var t = new EmployeeResponse()
                         {
                             FirstName = txbFirstName.Text,
                             SecondName = txbSecondName.Text,
                             ThirdName = txbThirdName.Text,
-                            ImageFile = Convert.ToBase64String(stream.ToArray()),
                             Login = "1",
                             Password = "2",
                             Role = "Продавец"
                         };
                         string result = await APIContext.Post("Employees", JsonSerializer.Serialize(t));
-                        if (string.IsNullOrEmpty(result))
-                        {
-                            MessageBox.Show("Не получилось");
-                        }
-                        else
+                        if (await CreateEmployee(t))
                         {
                             MessageBox.Show("Добавлено");
                             PageManager.MainFrame.GoBack();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Не получилось");
                         }
                     }
                 }
@@ -129,6 +155,11 @@ namespace ImagesWpfApp.Pages
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private async Task<bool> CreateEmployee(EmployeeResponse employee)
+        {
+            return !string.IsNullOrEmpty(await APIContext.Post("Employees", JsonSerializer.Serialize(employee)));
         }
     }
 }

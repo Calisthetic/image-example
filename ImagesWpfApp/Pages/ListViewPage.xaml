@@ -45,8 +45,8 @@
                             </Image.Source>
                         </Image>
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Column="2" HorizontalAlignment="Center">
-                            <Button x:Name="btnItemEdit" Content="Редактировать" HorizontalAlignment="Center" Margin="0 0 0 10"></Button>
-                            <Button x:Name="btnItemDelete" Content="Удалить" HorizontalAlignment="Center"></Button>
+                            <Button x:Name="btnItemEdit" Content="Редактировать" HorizontalAlignment="Center" Margin="0 0 0 10" Tag="{Binding Id}"></Button>
+                            <Button x:Name="btnItemDelete" Click="btnItemDelete_Click" Content="Удалить" HorizontalAlignment="Center" Tag="{Binding Id}"></Button>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

@@ -25,6 +25,7 @@ namespace ImagesWpfApp.Pages
     public partial class ListViewPage : Page
     {
         private bool _isClickable = false;
+        public ICommand DeleteCommand { get; }
         public ListViewPage()
         {
             InitializeComponent();
@@ -124,6 +125,19 @@ namespace ImagesWpfApp.Pages
         {
             _isClickable = cmbClickability.SelectedIndex == 1 ? true : cmbClickability.SelectedIndex == 2 ? false : _isClickable;
             cmbClickability.SelectedIndex = 0;
+        }
+
+        // don't work
+        private async void btnItemDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is string id)
+            {
+                var result = await APIContext.Delete("Employees/" + id);
+                if (!string.IsNullOrEmpty(result))
+                {
+                    MessageBox.Show("Успешно удалено");
+                }
+            }
         }
     }
 }

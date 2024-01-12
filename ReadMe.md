@@ -43,6 +43,12 @@
 Scaffold-DbContext "Data Source=DESKTOP-GJJERNN;Initial Catalog=24wsImages;Integrated Security=True;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models/Db -force
 ```
 
+С паролем:
+
+```bash
+Scaffold-DbContext "Data Source=192.168.0.117\SQLEXPRESS;Initial Catalog=db_name;User ID=User;Password=db_password;Trusted_Connection=true;TrustServerCertificate=true;Integrated Security=false;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -force
+```
+
 3. Контекст созданной модели позволяет взаиможействовать с базой данных
 4. Обращение к API с клиентского приложения осуществляется при помощи HTTP запросов
 
